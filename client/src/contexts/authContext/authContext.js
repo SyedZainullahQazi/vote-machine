@@ -1,5 +1,6 @@
-import axios from 'axios';
 import React, { createContext, useContext, useState,useEffect } from 'react';
+
+import { GetUser } from '../../apis/general/getuserdetailsAPI';
 
 const AuthContext = createContext();
 
@@ -20,10 +21,7 @@ export const AuthProvider = ({ children }) => {
 
   const getUserDetail = async (token) => {
     try {
-      const response = await axios.post(
-        'http://127.0.0.1:5000/api/generals/user-details',
-        {token:token}
-      );
+      const response = await GetUser(token);
       return (response.data.user);
     } catch (error) {
       console.error(error);
