@@ -14,8 +14,6 @@ import {signupAPI,loginAPI} from "../../../apis/auth/authAPI";
 
 export default function Auth(props) {
   const flag = props.flag;
-  console.log("flag is " + (flag ? "Login" : "SignUP"));
-
   const { isLoggedIn, login } = useAuth();
   const navigate = useNavigate();
   useEffect(() => {
@@ -68,10 +66,8 @@ export default function Auth(props) {
   
       if (token) {
         login(token);
-        console.log('User Registered Successfully');
       }
     } catch (error) {
-      console.log('CNIC/Email Already Exists');
     }
   };
 
@@ -89,12 +85,10 @@ export default function Auth(props) {
       }
     }catch(error)
     {
-      console.log(error);
     }
   };
 
   const handleSubmit = (values) => {
-    console.log("handleSubmit triggered");
     if (flag) {
       handleLogin(values);
     } else {

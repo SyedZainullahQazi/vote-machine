@@ -1,13 +1,10 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-const BASE_URL = 'http://127.0.0.1:5000/api/auth';
+const BASE_URL = `${process.env.REACT_APP_HOST }/api/auth`||'http://127.0.0.1:5000/api/auth';
 
 export const signupAPI = async (formData) => {
-  console.log("------------------");
-  console.log(formData);
-  console.log("------------------");
-
+  
   try {
     const response = await axios.post(`${BASE_URL}/signup`, formData, {
       headers: {
@@ -21,7 +18,13 @@ export const signupAPI = async (formData) => {
       return token;
     }
   } catch (error) {
-    toast.error('CNIC OR Email Already Exists', { theme: 'dark' });
+    if (error.response && error.response.status === 400) {
+      const errorMessage = error.response.data.message;
+      toast.error(errorMessage, { theme: 'dark' });
+
+    } else {
+      toast.error('An error occurred', { theme: 'dark' });
+    }
     throw error;
   }
 };
@@ -35,7 +38,13 @@ export const loginAPI = async (loginData) => {
       return token;
     }
   } catch (error) {
-    toast.error('Login Failed - WRONG CREDS', { theme: 'dark' });
+    if (error.response && error.response.status === 400) {
+      const errorMessage = error.response.data.message;
+      toast.error(errorMessage, { theme: 'dark' });
+
+    } else {
+      toast.error('An error occurred', { theme: 'dark' });
+    }
     throw error;
   }
 };

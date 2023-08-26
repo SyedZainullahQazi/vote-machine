@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
 import { useEffect } from "react";
-import { useParams,useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import * as Yup from "yup";
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -17,7 +17,6 @@ export default function ResetPassword(props) {
   //flag=true updatePassword Component
   const flag=props.flag;
  
-  const {token} = useParams();
   const navigate=useNavigate();
   const { isLoggedIn } = useAuth();
   useEffect(() => {
@@ -30,12 +29,14 @@ export default function ResetPassword(props) {
   const formik = useFormik({
     initialValues: {
       cnic: "",
-      newPassword:""
+      newPassword:"",
+      OTP:"",
     },
 
     validationSchema:flag
       ? Yup.object({
         newPassword: Yup.string().min(3, "Must be 3 Chars").required("Required"),
+        OTP:Yup.string().min(12,"Must be 12 Chars").required("Required"),
       })
       :
       Yup.object({
@@ -50,7 +51,7 @@ export default function ResetPassword(props) {
       }
       else
       {
-        resetPasswordNow(values,token);
+        resetPasswordNow(values);
       }
      
     },
@@ -61,24 +62,39 @@ export default function ResetPassword(props) {
       const response = await sendResetPasswordEmail(values.cnic);
   
       if (response.status === 200) {
-        console.log("Email Sent Success");
         toast.success("Email Sent Successfully", { theme: "dark" });
       }
     } catch (error) {
-      toast.failure("Invalid CNIC/Password Combination", { theme: "dark" });
+      if (error.response && error.response.status === 400) {
+        const errorMessage = error.response.data.message;
+        toast.error(errorMessage, { theme: 'dark' });
+  
+      } else {
+        toast.error('An error occurred', { theme: 'dark' });
+      }
     }
   };
 
-  const resetPasswordNow = async (values, token) => {
+  const resetPasswordNow = async (values) => {
     try {
-      const response = await resetPassword(token, values.newPassword);
+      const response = await resetPassword(values.OTP,values.newPassword);
   
       if (response.status === 200) {
-        console.log("Password Updated Success");
         toast.success("Password Updated Successfully", { theme: "dark" });
+        setTimeout(() => {
+          navigate('/');
+        }, 4000);
       }
     } catch (error) {
-      toast.failure("Error - Password Not Updated", { theme: "dark" });
+      if (error.response && error.response.status === 400) {
+        const errorMessage = error.response.data.message;
+        toast.error(errorMessage, { theme: 'dark' });
+      } else {
+        toast.error('An error occurred', { theme: 'dark' });
+        setTimeout(() => {
+          navigate('/');
+        }, 4000);
+      }
     }
   };
 
@@ -140,6 +156,36 @@ const cnicInput=(flag)=>{
   return(<></>)
 }
 
+const OTPInput=(flag)=>{
+  if(flag)
+  {
+    return(
+        <div>
+          <input
+          type="text"
+          placeholder="Enter Your OTP Code"
+          onChange={formik.handleChange}
+          value={formik.values.OTP}
+          className="form-control"
+          autoComplete="off"
+          id="OTP"
+          name="OTP"
+          onBlur={formik.handleBlur}
+          required
+        />
+        {formik.touched.OTP && formik.errors.OTP ? (
+          <p>{formik.errors.OTP}</p>
+        ) : (
+          <p>
+            <br />
+          </p>
+        )}
+      </div>
+    )
+  }
+  return (<></>);
+}
+
   return (
     <>
       <ToastContainer/>
@@ -149,6 +195,7 @@ const cnicInput=(flag)=>{
           <Form onSubmit={formik.handleSubmit}>
             {/* CNIC */}
             {cnicInput(flag)}
+            {OTPInput(flag)}
             {passwordInput(flag)}
             {/* submit button */}
             <Button variant="outline-light" type="submit" className="submit-btn">

@@ -18,7 +18,7 @@ const App = () => {
         <Route path="/signup" element={ <Signup/>}/>
         <Route path="/dashboard" element={<ProtectedRoute elementBody={<Dashboard/>}/>}/>
         <Route path="/reset-password" element={<ForgotPassword/>}/>
-        <Route path="/reset-password/:token" element={<UpdatePassword/>}/>
+        <Route path="/reset-password/new-password" element={<UpdatePassword/>}/>
       </Routes>
     </AuthProvider>
   );

@@ -1,4 +1,5 @@
 import axios from 'axios';
+const baseurl=process.env.REACT_APP_HOST ||"127.0.0.1:5000"
 
 export const sendResetPasswordEmail = async (cnic) => {
   const loginData = {
@@ -7,7 +8,7 @@ export const sendResetPasswordEmail = async (cnic) => {
 
   try {
     const response = await axios.post(
-      "http://127.0.0.1:5000/api/auth/reset-password",
+      `${baseurl}/api/auth/reset-password`,     
       loginData
     );
 
@@ -17,14 +18,15 @@ export const sendResetPasswordEmail = async (cnic) => {
   }
 };
 
-export const resetPassword = async (token, newPassword) => {
+export const resetPassword = async (OTPCode, newPassword) => {
   const updateData = {
     password: newPassword,
+    OTP:OTPCode,
   };
 
   try {
     const response = await axios.post(
-      `http://127.0.0.1:5000/api/auth/reset-password/${token}`,
+      `${baseurl}/api/auth/reset-password/new-password`,
       updateData
     );
 

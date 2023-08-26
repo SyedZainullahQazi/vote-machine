@@ -13,7 +13,7 @@ router.post('/signup', upload.single('image'),signupController.addUser);
 router.post('/login',loginController.checkLogin)
 router.get("/dashboard",authMiddleware,Dashboard.dashboard);
 router.post("/reset-password",forgetPassword.ResetPasswordSend);
-router.post("/reset-password/:token",forgetPassword.ResetPassword);
+router.post("/reset-password/new-password",forgetPassword.ResetPassword);
 
 
 router.get('/verify', passport.authenticate('jwt', { session: false }), (req, res) => {

@@ -22,6 +22,10 @@ const userSchema = new Schema({
     enum: userTypeEnum,
     required: true,
   },
+  otp: {
+    value: { type: String, default: '' },
+    updatedAt: { type: Date, default: null },
+  },
   profilePic: { type: String, required: true },
   halkaId: { type: Schema.Types.ObjectId, default: null },
   partyName: { type: String, default: '' },

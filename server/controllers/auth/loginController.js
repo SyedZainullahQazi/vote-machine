@@ -8,10 +8,9 @@ async function checkLogin(req, res) {
   try {
     const { password, cnic } = req.body;
 
-    const existingUser = await User.findOne({ cnic });
-    console.log(existingUser);  
+    const existingUser = await User.findOne({ cnic }); 
     if (!existingUser) {
-      return res.status(400).json({ message: "User not found" });
+      return res.status(400).json({ message: "Invalid Cnic" });
     }
 
     const isPasswordValid = await bcrypt.compare(password, existingUser.password);
@@ -19,7 +18,7 @@ async function checkLogin(req, res) {
       const token = jwt.sign({ sub: existingUser.cnic }, jwtSecret);
       return res.json({ token });
     } else {
-      res.status(400).json({ message: "Invalid CNIC/Password Combination" });
+      res.status(400).json({ message: "Invalid Password" });
     }
   } catch (error) {
     console.error('Error checking login:', error);
