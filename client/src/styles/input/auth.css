@@ -1,0 +1,71 @@
+/* Adjusted Color Scheme */
+:root {
+  --primary-color: #4E0250; /* Deep Purple */
+  --secondary-color: #0A1931; /* Dark Blue */
+  --accent-color: #FCBf49; /* Golden Yellow */
+  --background-color: #1B262C; /* Dark Background */
+  --text-color: #FFFFFF; /* White Text */
+}
+
+/* Main Wrapper */
+.main-wrapper {
+  padding: 10vh;
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  min-height: 100vh;
+}
+
+/* Inner Wrapper */
+.inner-wrapper {
+  background-color: var(--background-color);
+  padding: 5vh;
+  border-radius: 5vh;
+  border: 1vh solid var(--accent-color);
+}
+
+/* Vote Text */
+.vote-text {
+  color: var(--accent-color);
+  padding-bottom: 3vh;
+}
+
+/* First Wrapper */
+.first-wrapper {
+  background-color: var(--accent-color);
+  height: 100vh;
+  align-items: center;
+}
+
+/* Main Wrapper Paragraph */
+.main-wrapper p {
+  color: var(--text-color);
+}
+
+/* Main Wrapper Input */
+.main-wrapper input {
+  border: none;
+  border-bottom: 0.2vh solid var(--accent-color);
+  background-color: transparent;
+  border-radius: 0;
+  padding: 0;
+  height: auto;
+  color: var(--text-color);
+}
+
+/* Main Wrapper Input Focus */
+.main-wrapper input:focus {
+  background-color: var(--background-color);
+  box-shadow: none;
+  color: var(--accent-color);
+}
+
+/* Main Wrapper Input Placeholder */
+.main-wrapper input::placeholder {
+  color: grey;
+}
+
+/* Sign In */
+.signin {
+  color: darkgrey;
+  padding: 0;
+  padding-bottom: 3vh;
+}
