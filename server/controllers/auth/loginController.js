@@ -4,7 +4,6 @@ const jwt = require('jsonwebtoken');
 const jwtSecret = process.env.JWT_SECRET || "sajjadbhai";
 
 async function checkLogin(req, res) {
-  console.log('Login is triggered');
   try {
     const { password, cnic } = req.body;
 

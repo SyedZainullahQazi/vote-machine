@@ -9,6 +9,8 @@ const generalRoutes=require("./routes/generals/generalsRoutes.js");
 const adminHalkaRoutes=require("./routes/admin/adminHalkaRoutes.js");
 const InviteUserRoutes=require("./routes/admin/InviteUserRoutes.js");
 const ScheduleElection=require("./routes/admin/adminScheduleRoutes.js");
+const userRoutes=require("./routes/user/userRoutes.js");
+const GetCandidatesApplications=require("./routes/admin/candidateApplicationRoutes.js");
 
 const bodyParser = require('body-parser');
 
@@ -24,6 +26,9 @@ app.use('/api/generals',generalRoutes);
 app.use('/api/admin/halka',adminHalkaRoutes);
 app.use('/api/admin/InviteUser',InviteUserRoutes);
 app.use('/api/admin/schedule-elections',ScheduleElection);
+app.use('/api/admin/candidate-application',GetCandidatesApplications);
+
+app.use('/api/user',userRoutes);
 
 app.use(bodyParser.json());
 

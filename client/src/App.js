@@ -17,6 +17,8 @@ import CreateHalka from './pages/admin/createHalka';
 import InviteStakeHolders from './pages/admin/inviteStakeHolders';
 import ScheduleElection from './pages/admin/scheduleElection';
 
+import ApplyAsCandidate from './pages/user/applyAsCandidate';
+
 
 const App = () => {
   return (
@@ -31,6 +33,8 @@ const App = () => {
         <Route path="/create-constituency" element={<AdminProtectedRoute elementBody={<CreateHalka/>}/>}/>
         <Route path="/invite-stakeholders" element={<AdminProtectedRoute elementBody={<InviteStakeHolders/>}/>}/>
         <Route path="/schedule-elections"  element={<AdminProtectedRoute elementBody={<ScheduleElection/>}/>}/>
+        
+        <Route path="/apply" element={<GeneralProtectedRoute elementBody={<ApplyAsCandidate/>}/>}/>
 
       </Routes>
     </AuthProvider>
