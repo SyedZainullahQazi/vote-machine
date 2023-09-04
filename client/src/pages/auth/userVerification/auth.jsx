@@ -19,15 +19,22 @@ export default function Auth(props) {
 
   useEffect(() => {
     if (isLoggedIn) {
-      const timeoutId = setTimeout(() => {
+      let timeoutId;
+      if (!flag) {
+        timeoutId = setTimeout(() => {
+          navigate("/dashboard");
+        }, 1000);
+      } else {
         navigate("/dashboard");
-      }, 1000); 
-
+        return; 
+      }
       return () => {
-        clearTimeout(timeoutId); // Clear the timeout if the component unmounts before the timeout
+        if (timeoutId) {
+          clearTimeout(timeoutId);
+        }
       };
     }
-  }, [isLoggedIn, navigate, props.flag]); 
+  }, [isLoggedIn, navigate, flag]); 
 
   const formik = useFormik({
     initialValues: {

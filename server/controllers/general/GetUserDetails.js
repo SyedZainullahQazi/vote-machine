@@ -11,7 +11,7 @@ const GetUserDetails = async (req, res) => {
       username: user.username,
       email: user.email,
       cnic: user.cnic,
-      usertype: user.usertype,
+      usertype: user.userType,
       profilePic: user.profilePic,
       halkaId: user.halkaId,
       userType:user.userType,

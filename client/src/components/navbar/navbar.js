@@ -2,28 +2,31 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from "../../contexts/authContext/authContext";
 
+import getUserDetailsFromLocalStorage from '../../helpers/userDetailsFromLocalStorage/getUserDetails';
+
 import '../../styles/navbar/navbar.css';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
-const Navbar = ({role}) => {
-  const {userDetails,logout}=useAuth();
+const Navbar = () => {
+  const {logout}=useAuth();
+  const userDetails=getUserDetailsFromLocalStorage();
+
   if (!userDetails) {
-    // Render a loading indicator or placeholder while userDetails is being fetched
     return <div>Loading...</div>;
   }  
   return (
     <nav className="navbar">
       <ul className="nav-list">
         <li><Link to="/" className="nav-link">Dashboard</Link></li>
-        {role === 'voter' && (
+        {userDetails.userType === 'voter' && (
           <>
             <li><Link to="/apply" className="nav-link">Apply as Candidate</Link></li>
             <li><Link to="/vote" className="nav-link">Vote</Link></li>
             <li><Link to="/results" className="nav-link">Results</Link></li>
           </>
         )}
-        {role === 'admin' && (
+        {userDetails.userType === 'admin' && (
           <>
             <li><Link to="/vote" className="nav-link">Vote</Link></li>
             <li><Link to="/results" className="nav-link">Results</Link></li>
@@ -33,7 +36,7 @@ const Navbar = ({role}) => {
             <li><Link to="/invite-stakeholders" className="nav-link">Invite Stakeholders</Link></li>
           </>
         )}
-        {role === 'candidate' && (
+        {userDetails.userType === 'candidate' && (
           <>
             <li><Link to="/vote" className="nav-link">Vote</Link></li>
             <li><Link to="/results" className="nav-link">Results</Link></li>

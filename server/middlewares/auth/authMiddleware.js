@@ -2,7 +2,12 @@ const jwt = require('jsonwebtoken');
 const jwtSecret = process.env.JWT_SECRET || 'sajjadbhai';
 
 function authMiddleware(req, res, next) {
-  const token = req.body.token; // Extract token from the request body
+  let token = req.body.token;
+  if(!token)
+  {
+    token = req.headers['authorization'];
+  }
+
   if (!token) {
     console.log("access Denied Token Not Provided");
     return res.status(401).json({ message: 'Access denied. Token not provided.' });

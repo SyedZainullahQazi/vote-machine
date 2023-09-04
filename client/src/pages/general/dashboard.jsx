@@ -1,18 +1,20 @@
 import React from 'react';
-import { useAuth } from "../../contexts/authContext/authContext";
+
+import getUserDetailsFromLocalStorage from '../../helpers/userDetailsFromLocalStorage/getUserDetails';
 
 import Navbar from '../../components/navbar/navbar';
 import '../../styles/navbar/navbar.css'; // Import your updated CSS styles here
 
 export default function Dashboard() {
-  const { userDetails } = useAuth();
+  const  userDetails  = getUserDetailsFromLocalStorage();
+
   if (!userDetails) {
       return <div>Loading...</div>;
   }
 
   return (
     <div className="dashboard-page">
-      <Navbar role={userDetails.userType} />
+      <Navbar/>
       <div className="content">
         <h1> Hello World</h1>
       </div>
