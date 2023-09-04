@@ -1,7 +1,6 @@
 const User = require('../../models/users/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const jwtSecret = process.env.JWT_SECRET || "sajjadbhai";
 
 async function checkLogin(req, res) {
   console.log('Login is triggered');
@@ -15,7 +14,7 @@ async function checkLogin(req, res) {
 
     const isPasswordValid = await bcrypt.compare(password, existingUser.password);
     if (isPasswordValid) {
-      const token = jwt.sign({ sub: existingUser.cnic }, jwtSecret);
+      const token = jwt.sign({ sub: existingUser.cnic }, process.env.JWT_SECRET);
       return res.json({ token });
     } else {
       res.status(400).json({ message: "Invalid Password" });

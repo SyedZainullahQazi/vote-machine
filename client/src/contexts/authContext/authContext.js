@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
       console.error(error);
     }
   };
-
+  
   useEffect(() => {
     async function fetchUserDetails() {
       try {

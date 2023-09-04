@@ -1,5 +1,4 @@
 import axios from 'axios';
-const baseurl=process.env.REACT_APP_HOST ||"127.0.0.1:5000"
 
 export const sendResetPasswordEmail = async (cnic) => {
   const loginData = {
@@ -8,7 +7,7 @@ export const sendResetPasswordEmail = async (cnic) => {
 
   try {
     const response = await axios.post(
-      `${baseurl}/api/auth/reset-password`,     
+      `${process.env.REACT_APP_HOST}/api/auth/reset-password`,     
       loginData
     );
 
@@ -26,7 +25,7 @@ export const resetPassword = async (OTPCode, newPassword) => {
 
   try {
     const response = await axios.post(
-      `${baseurl}/api/auth/reset-password/new-password`,
+      `${process.env.REACT_APP_HOST}/api/auth/reset-password/new-password`,
       updateData
     );
 
