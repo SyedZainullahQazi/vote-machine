@@ -16,12 +16,18 @@ export default function Auth(props) {
   const flag = props.flag;
   const { isLoggedIn, login } = useAuth();
   const navigate = useNavigate();
+
   useEffect(() => {
-    // Check if the user is logged in and navigate to "/dashboard" if true
     if (isLoggedIn) {
-      navigate("/dashboard");
+      const timeoutId = setTimeout(() => {
+        navigate("/dashboard");
+      }, 1000); 
+
+      return () => {
+        clearTimeout(timeoutId); // Clear the timeout if the component unmounts before the timeout
+      };
     }
-  }, [isLoggedIn, navigate, props.flag]); // This effect runs whenever isLoggedIn or navigate changes
+  }, [isLoggedIn, navigate, props.flag]); 
 
   const formik = useFormik({
     initialValues: {
