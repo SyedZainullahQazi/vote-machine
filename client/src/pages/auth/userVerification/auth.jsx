@@ -36,7 +36,6 @@ export default function Auth(props) {
     }
   }, [isLoggedIn, navigate, flag]); 
   
-
   const formik = useFormik({
     initialValues: {
       name: "",
