@@ -11,12 +11,14 @@ async function DisableVoting(electionId) {
         { active: false },
         { new: true }
       );
+      
       if (!updatedElection) {
         console.log("Election not Found with the matching ID");
       }
       const halkas = await Halka.find({});
       for (const halka of halkas) {
         const candidates = halka.candidates.candidate;
+
         if (Array.isArray(candidates) && candidates.length > 0) 
         {
           for (const candidateData of candidates) 

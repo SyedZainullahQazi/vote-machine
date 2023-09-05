@@ -1,4 +1,4 @@
-const User = require('../../../models/users/user'); // Assuming your user model is in a file named 'user.js'
+const User = require('../../../models/users/user');
 
 const GetCandidatesApplications = async (req, res) => {
   try {

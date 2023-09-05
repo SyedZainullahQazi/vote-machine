@@ -54,7 +54,6 @@ export const AuthProvider = ({ children }) => {
   }, [token,setUserDetails]);
 
 
-
   const isLoggedIn = !!token;
 
   return (

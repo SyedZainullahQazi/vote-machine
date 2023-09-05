@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const candidateSchema = new mongoose.Schema({
   candidate: [{
-    candidateId: { type: mongoose.Schema.Types.ObjectId, ref: 'User',unique: true, },
+    candidateId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     voteCount: Number
   }]
 });
