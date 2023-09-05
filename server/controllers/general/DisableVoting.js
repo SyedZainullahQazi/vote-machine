@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+
 const Election = require("../../models/election-schedule/election-schedule");
 const { Halka, Candidate } = require("../../models/halka/halka");
 const User = require("../../models/users/user");
@@ -19,11 +20,10 @@ async function DisableVoting(electionId) {
       if (Array.isArray(candidates) && candidates.length > 0) {
         for (const candidateData of candidates) {
           const candidateId = candidateData.candidateId;
-          // const candidate = await User.findById(candidateId);
-          // if (!candidate) {
-          //   console.error(`Candidate not found with ID: ${candidateId}`);
-          //   continue;
-          // }
+          const candidate = await User.findOne({ _id: candidateId });
+          candidateData.partyName = candidate.partyName;
+          candidateData.symbolImg = candidate.symbolImg;
+          candidateData.username=candidate.username;
           const totalVotes = await User.countDocuments({
             votedFor: candidateId,
           });

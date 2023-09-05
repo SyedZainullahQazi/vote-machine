@@ -3,7 +3,10 @@ const mongoose = require('mongoose');
 const candidateSchema = new mongoose.Schema({
   candidate: [{
     candidateId: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
-    voteCount: Number
+    voteCount: Number,
+    partyName:{type :String},
+    symbolImg:{type:String},
+    username:{type:String},
   }]
 });
 

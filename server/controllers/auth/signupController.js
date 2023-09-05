@@ -1,10 +1,10 @@
-const User = require('../../models/users/user');
 const bcrypt=require('bcrypt')
 const jwt = require('jsonwebtoken');
 const jwtSecret = process.env.JWT_SECRET||"sajjadbhai"; 
 
+const User = require('../../models/users/user');
+
 async function addUser(req, res) {
-  console.log('Add user is triggered');
   try {
     const { name, email, password, cnic, userType } = req.body;
     const profilePic = req.file ? req.file.filename : '';   
@@ -31,7 +31,7 @@ async function addUser(req, res) {
     });
 
     await newUser.save();
-    console.log("User Added Successfully"); 
+
     const token = jwt.sign({ sub: newUser.cnic }, jwtSecret);
     return res.json({ token });
 

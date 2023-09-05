@@ -1,12 +1,12 @@
 import Navbar from "../../components/navbar/navbar";
-import { useState, useEffect } from "react";
 import { ToastContainer } from "react-toastify";
+import { useState, useEffect } from "react";
 
-import { VoteAPI } from "../../apis/general/VoteAPI";
-import { GetUser } from "../../apis/general/getuserdetailsAPI";
 import { FetchClosestScheduleAPI } from "../../apis/general/GetClosestSchedule";
+import { GetUser } from "../../apis/general/getuserdetailsAPI";
 import { GetHalkaCandidatesAPI } from "../../apis/general/GetHalkaCandidates";
 import { Pagination } from "../../components/pagination/pagination";
+import { VoteAPI } from "../../apis/general/VoteAPI";
 
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
@@ -17,14 +17,11 @@ export default function Vote() {
   const [schedulesData, setElectionSchedule] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [userDetails,setUserDetails]=useState(null)
-  // const userDetails = getUserDetailsFromLocalStorage();
-
-  //userdata
+  
   useEffect(()=>{
     const fetchData=async()=>{
       try{
         const userData=await GetUser(localStorage.getItem("jwtToken"));
-        console.log(userData.data.user);
         setUserDetails(userData.data.user);
       }
       catch(error)
@@ -35,7 +32,6 @@ export default function Vote() {
     fetchData();
   },[stateUpdate])
 
-  //candidates
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -60,7 +56,6 @@ export default function Vote() {
       try {
         const schedulesData = await FetchClosestScheduleAPI();
         setElectionSchedule(schedulesData);
-        console.log(schedulesData);
       } catch (error) {
         console.error("Error fetching election schedules:", error);
       }
