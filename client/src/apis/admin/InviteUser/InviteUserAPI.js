@@ -3,8 +3,6 @@ import {toast} from "react-toastify"
 
 // InviteUserAPI.js
 
-// InviteUserAPI.js
-
 export const InviteUserAPI = async (token, data) => {
   try {
     const response = await axios.put(

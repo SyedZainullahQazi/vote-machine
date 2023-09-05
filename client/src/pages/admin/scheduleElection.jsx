@@ -124,8 +124,6 @@ const ScheduleElection = () => {
   const handleUpdate=(schedule)=>{
     if(!schedule.active)
     {
-      console.log(new Date(schedule.startDateTime).toTimeString());
-      // Update the formik values with the selected schedule's values
       formik.setValues({
       startDate: new Date(schedule.startDateTime).toISOString().split('T')[0],
       startTime: new Date(schedule.startDateTime).toTimeString().substring(0, 5),

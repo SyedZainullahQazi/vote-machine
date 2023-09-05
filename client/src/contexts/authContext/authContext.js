@@ -2,6 +2,9 @@ import React, { createContext, useContext, useState,useEffect } from 'react';
 import CryptoJS from 'crypto-js'; // Import the crypto-js library
 
 import { GetUser } from '../../apis/general/getuserdetailsAPI';
+// import EnableVotingAPI from '../../apis/general/OnOffVotingAPI';
+// import { DisableVotingAPI } from '../../apis/general/OnOffVotingAPI';
+// import { FetchClosestScheduleAPI} from '../../apis/general/GetClosestSchedule';
 
 const AuthContext = createContext();
 

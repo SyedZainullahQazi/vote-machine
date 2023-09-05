@@ -1,17 +1,19 @@
 const express = require("express");
 const cors = require("cors");
-const dotenv = require("dotenv").config();
 const connectToDatabase = require("./db/db.js");
+const dotenv = require("dotenv").config();
+require("./config/electionScheduler");
+
 const authRoutes = require("./routes/auth/authRoutes.js");
 const generalRoutes=require("./routes/generals/generalsRoutes.js");
 const adminHalkaRoutes=require("./routes/admin/adminHalkaRoutes.js");
 const InviteUserRoutes=require("./routes/admin/InviteUserRoutes.js");
 const ScheduleElection=require("./routes/admin/adminScheduleRoutes.js");
+
 const bodyParser = require('body-parser');
 
 const app = express();
 const port = process.env.PORT || 5001;
-
 
 connectToDatabase();
 app.use(cors());
