@@ -20,7 +20,6 @@ app.use(cors());
 app.use(express.json());
 app.use('/api/auth', authRoutes); 
 app.use('/api/generals',generalRoutes);
-
 app.use('/api/admin/halka',adminHalkaRoutes);
 app.use('/api/admin/InviteUser',InviteUserRoutes);
 app.use('/api/admin/schedule-elections',ScheduleElection);
