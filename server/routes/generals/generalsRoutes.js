@@ -1,4 +1,5 @@
 const express = require('express');
+
 const authMiddleware = require("../../middlewares/auth/authMiddleware");
 const {GetUserDetails,GetUserDetailsForInvite}= require("../../controllers/general/GetUserDetails");
 const GetClosestSchedule=require("../../controllers/general/GetClosestSchedule");

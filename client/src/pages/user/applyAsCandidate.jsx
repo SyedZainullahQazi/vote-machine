@@ -1,13 +1,13 @@
+import { ToastContainer } from "react-toastify";
+
 import { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
+import {Form} from "react-bootstrap"
 import { GetUser } from "../../apis/general/getuserdetailsAPI";
-import updateCandidateStatusAPI from "../../apis/user/applyAsCandidateAPI";
 import Navbar from "../../components/navbar/navbar";
-import { Form, Button } from "react-bootstrap";
-
-import { ToastContainer } from "react-toastify";
+import updateCandidateStatusAPI from "../../apis/user/applyAsCandidateAPI";
 
 export default function ApplyAsCandidate() {
   const [userDetails, setUserDetails] = useState();

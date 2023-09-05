@@ -1,6 +1,5 @@
 function dashboard()
 {
-    console.log("Hello Dashboard");
     return
 }
 

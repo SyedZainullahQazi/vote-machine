@@ -16,6 +16,7 @@ import UpdatePassword from './pages/auth/reset-password/updatePassword';
 import CreateHalka from './pages/admin/createHalka';
 import InviteStakeHolders from './pages/admin/inviteStakeHolders';
 import ScheduleElection from './pages/admin/scheduleElection';
+import ReviewCandidateApplications from './pages/admin/reviewCandidateApplications';
 import ApplyAsCandidate from './pages/user/applyAsCandidate';
 
 const App = () => {
@@ -30,6 +31,7 @@ const App = () => {
         <Route path="/create-constituency" element={<AdminProtectedRoute elementBody={<CreateHalka/>}/>}/>
         <Route path="/invite-stakeholders" element={<AdminProtectedRoute elementBody={<InviteStakeHolders/>}/>}/>
         <Route path="/schedule-elections"  element={<AdminProtectedRoute elementBody={<ScheduleElection/>}/>}/>
+        <Route path="/review-candidate-applications"  element={<AdminProtectedRoute elementBody={<ReviewCandidateApplications/>}/>}/>
         <Route path="/apply" element={<GeneralProtectedRoute elementBody={<ApplyAsCandidate/>}/>}/>
       </Routes>
     </AuthProvider>
