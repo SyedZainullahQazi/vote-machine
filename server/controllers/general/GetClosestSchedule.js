@@ -18,10 +18,8 @@ async function GetClosestSchedule(req, res) {
       }).sort({ startDateTime: 1 });
 
       if (nextElection) {
-        // If a next election is found, return it
         res.status(200).json(nextElection);
       } else {
-        // If no elections are found, return an appropriate message
         res.status(404).json({ message: 'No upcoming elections found.' });
       }
     }

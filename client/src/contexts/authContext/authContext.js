@@ -53,7 +53,6 @@ export const AuthProvider = ({ children }) => {
     fetchUserDetails();
   }, [token,setUserDetails]);
 
-
   const isLoggedIn = !!token;
 
   return (

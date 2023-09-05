@@ -12,7 +12,7 @@ const ApprovedCandidate = async (req, res) => {
     const halka = await Halka.findOne({ halkaId: approved.halkaId });
     if (halka) {
       halka.candidates.candidate.push({
-        candidateId: approved.userId,
+        candidateId: approved._id,
         voteCount: 0,
       });
       await halka.save();

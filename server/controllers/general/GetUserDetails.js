@@ -16,6 +16,7 @@ const GetUserDetails = async (req, res) => {
       halkaId: user.halkaId,
       userType:user.userType,
       appliedAsCandidate:user.appliedAsCandidate,
+      votedFor:user.votedFor, 
     };
     res.status(200).json({ user: userDetails });
   } catch (error) {

@@ -11,13 +11,11 @@ const CreateHalkaCont = async (req, res) => {
       return res.status(400).json({ message: 'halkaId already exists' });
     }
 
-    // Create a new Halka instance based on the data from the request
     const newHalka = new Halka({
       halkaId,
       halkaName,
       candidates: {
         candidate: [],
-        voteCount: []
       }
     });
 

@@ -11,6 +11,7 @@ const InviteUserRoutes=require("./routes/admin/InviteUserRoutes.js");
 const ScheduleElection=require("./routes/admin/adminScheduleRoutes.js");
 const userRoutes=require("./routes/user/userRoutes.js");
 const GetCandidatesApplications=require("./routes/admin/candidateApplicationRoutes.js");
+const voteRoutes=require('./routes/generals/voteRoutes.js');
 
 const bodyParser = require('body-parser');
 
@@ -22,6 +23,7 @@ app.use(cors());
 app.use(express.json());
 app.use('/api/auth', authRoutes); 
 app.use('/api/generals',generalRoutes);
+app.use('/api/generals/vote',voteRoutes);
 app.use('/api/admin/halka',adminHalkaRoutes);
 app.use('/api/admin/InviteUser',InviteUserRoutes);
 app.use('/api/admin/schedule-elections',ScheduleElection);
