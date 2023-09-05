@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-
 export const signupAPI = async (formData) => {
   
   try {

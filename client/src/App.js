@@ -14,6 +14,7 @@ import ForgotPassword from './pages/auth/reset-password/forgotPassword';
 import UpdatePassword from './pages/auth/reset-password/updatePassword';
 
 import CreateHalka from './pages/admin/createHalka';
+import InviteStakeHolders from './pages/admin/inviteStakeHolders';
 
 const App = () => {
   return (
@@ -24,7 +25,9 @@ const App = () => {
         <Route path="/dashboard" element={<GeneralProtectedRoute elementBody={<Dashboard/>}/>}/>
         <Route path="/reset-password" element={<ForgotPassword/>}/>
         <Route path="/reset-password/new-password" element={<UpdatePassword/>}/>
+
         <Route path="/create-constituency" element={<AdminProtectedRoute elementBody={<CreateHalka/>}/>}/>
+        <Route path="/invite-stakeholders" element={<AdminProtectedRoute elementBody={<InviteStakeHolders/>}/>}/>
       </Routes>
     </AuthProvider>
   );

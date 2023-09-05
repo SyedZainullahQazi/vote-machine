@@ -27,11 +27,11 @@ const userSchema = new Schema({
     updatedAt: { type: Date, default: null },
   },
   profilePic: { type: String, required: true },
-  halkaId: { type: Schema.Types.ObjectId, default: null },
+  halkaId: { type: String, ref: 'Halka', default: null }, // Reference to the Halka model
   partyName: { type: String, default: '' },
   symbolImg: { type: String, default: '' },
   appliedAsCandidate: { type: Boolean, default: false },
-  votedFor: { type: Schema.Types.ObjectId, default: null },
+  votedFor: { type: Schema.Types.ObjectId,ref:"User", default: null },
 });
 
 const User = mongoose.model('User', userSchema);

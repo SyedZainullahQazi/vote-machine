@@ -35,13 +35,13 @@ export const AuthProvider = ({ children }) => {
         if (token) {
           const user = await getUserDetail(token);
           setUserDetails(user);
+          
           const encryptedUserDetails = CryptoJS.AES.encrypt(
             JSON.stringify(user),
             `${process.env.JWT_SECRET}`
           ).toString();
 
           localStorage.setItem('userDetails', encryptedUserDetails);
-          console.log(localStorage.getItem('userDetails'));
         }
       } catch (error) {
         console.error(error);

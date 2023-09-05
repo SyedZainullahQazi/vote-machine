@@ -14,11 +14,8 @@ import GetHalkaDetails from "../../apis/admin/halka/getHalkaDetails";
 export default function CreateHalka() { 
   const [halkaList, setHalkaList] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-
   const [editingState, setEditingState] = useState(false);
   const [recordChange,setRecordChange]=useState(false);
-
-  console.log("render hogaya");
 
     useEffect(() => {
       async function fetchHalkaData() {
@@ -92,7 +89,6 @@ export default function CreateHalka() {
   });
 
   const deleteHalka = async (halkaId) => {
-    console.log(halkaId);
     await DeleteHalkaAPI(localStorage.getItem("jwtToken"), halkaId);
     setRecordChange(true);
   };

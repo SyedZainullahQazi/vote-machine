@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast} from "react-toastify";
 
 export const GetUser=async(token)=>{
     try{
@@ -13,3 +14,18 @@ export const GetUser=async(token)=>{
         throw error;
     }
 }
+
+export const GetUserForInvitesAPI = async (token) => {
+
+  try {
+    const response = await axios.get(`${process.env.REACT_APP_HOST}/api/generals/user-details/for-invite`, {
+      headers: {
+        authorization:token,
+      }
+    });
+    return response.data.users;
+  } catch (error) {
+    console.error(error);
+    toast.error('An error occurred while fetching users for invites.');
+  }
+};

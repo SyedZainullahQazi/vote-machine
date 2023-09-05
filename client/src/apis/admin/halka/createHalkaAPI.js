@@ -3,7 +3,6 @@ import { toast } from 'react-toastify';
 
 export const CreateHalkaAPI = async (newHalka, newToken) => {
   try {
-    console.log(newHalka);
     const response = await axios.post(
       `${process.env.REACT_APP_HOST}/api/admin/halka/create-halka`,
       { halka: newHalka, token: newToken }
