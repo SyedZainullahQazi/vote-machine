@@ -3,7 +3,6 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 async function checkLogin(req, res) {
-  console.log('Login is triggered');
   try {
     const { password, cnic } = req.body;
 

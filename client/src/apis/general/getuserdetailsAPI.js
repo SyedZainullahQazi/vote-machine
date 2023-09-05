@@ -13,7 +13,7 @@ export const GetUser=async(token)=>{
     {
         throw error;
     }
-}
+};
 export const GetUserForInvitesAPI = async (token) => {
 
   try {

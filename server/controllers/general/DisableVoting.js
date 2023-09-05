@@ -25,7 +25,6 @@ async function DisableVoting(electionId) {
         // Step 3: Get each candidate from the array of candidates in the Halka
         const candidates = halka.candidates.candidate;
 
-        console.log(candidates);  
         if (Array.isArray(candidates) && candidates.length > 0) 
         {
           for (const candidateData of candidates) 
