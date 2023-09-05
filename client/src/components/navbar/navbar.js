@@ -41,7 +41,6 @@ const Navbar = () => {
             <li><Link to="/vote" className="nav-link">Vote</Link></li>
             <li><Link to="/results" className="nav-link">Results</Link></li>
             <li><Link to="/my-voters" className="nav-link">My Voters</Link></li>
-            <li><Link to="/total-vote-casts" className="nav-link">Total Vote Casts</Link></li>
           </>
         )}
       </ul>

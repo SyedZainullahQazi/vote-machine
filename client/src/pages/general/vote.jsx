@@ -17,7 +17,7 @@ export default function Vote() {
   const [schedulesData, setElectionSchedule] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [userDetails,setUserDetails]=useState(null)
-  
+
   useEffect(()=>{
     const fetchData=async()=>{
       try{

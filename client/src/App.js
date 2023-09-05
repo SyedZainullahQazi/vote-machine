@@ -22,6 +22,7 @@ import Vote from './pages/general/vote';
 import Results from './pages/general/results/results';
 import HalkaResults from './pages/general/results/halkaResults';
 import HalkaResultPoll from './pages/general/results/halkaResultPolls';
+import MyVoter from './pages/candidate/myVoter';
 
 const App = () => {
   return (

@@ -12,6 +12,7 @@ const ScheduleElection=require("./routes/admin/adminScheduleRoutes.js");
 const userRoutes=require("./routes/user/userRoutes.js");
 const GetCandidatesApplications=require("./routes/admin/candidateApplicationRoutes.js");
 const voteRoutes=require('./routes/generals/voteRoutes.js');
+const candidateRoutes=require("./routes/candidates/candidatesRoutes.js");
 
 const bodyParser = require('body-parser');
 
@@ -30,6 +31,7 @@ app.use('/api/admin/schedule-elections',ScheduleElection);
 app.use('/api/admin/candidate-application',GetCandidatesApplications);
 
 app.use('/api/user',userRoutes);
+app.use('/api/candidate',candidateRoutes);
 
 app.use(bodyParser.json());
 
