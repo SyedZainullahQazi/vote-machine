@@ -1,12 +1,10 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-const BASE_URL = `${process.env.REACT_APP_HOST }/api/auth`||'http://127.0.0.1:5000/api/auth';
-
 export const signupAPI = async (formData) => {
   
   try {
-    const response = await axios.post(`${BASE_URL}/signup`, formData, {
+    const response = await axios.post(`${process.env.REACT_APP_HOST }/api/auth/signup`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -31,8 +29,7 @@ export const signupAPI = async (formData) => {
 
 export const loginAPI = async (loginData) => {
   try {
-    const response = await axios.post(`${BASE_URL}/login`, loginData);
-
+    const response = await axios.post(`${process.env.REACT_APP_HOST }/api/auth/login`, loginData);
     if (response.status === 200) {
       const token = response.data.token;
       return token;
