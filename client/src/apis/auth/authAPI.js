@@ -30,7 +30,6 @@ export const signupAPI = async (formData) => {
 export const loginAPI = async (loginData) => {
   try {
     const response = await axios.post(`${process.env.REACT_APP_HOST }/api/auth/login`, loginData);
-
     if (response.status === 200) {
       const token = response.data.token;
       return token;

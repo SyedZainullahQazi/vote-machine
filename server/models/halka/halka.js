@@ -30,4 +30,4 @@ const halkaSchema = new mongoose.Schema({
 const Halka = mongoose.model('Halka', halkaSchema);
 const Candidate = mongoose.model('Candidate', candidateSchema);
 
-module.exports = { Halka, Candidate };
+module.exports = { Halka, Candidate,halkaSchema };

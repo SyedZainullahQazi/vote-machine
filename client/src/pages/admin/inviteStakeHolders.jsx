@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect} from "react";
 import Navbar from "../../components/navbar/navbar";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -46,23 +46,15 @@ export default function InviteStakeHolders() {
       const selectedHalkaId = document.querySelector(
         `#halka-${user.cnic}`
       ).value;
-      const selectedUserType = document.querySelector(
-        `#userType-${user.cnic}`
-      ).value;
 
       if (!selectedHalkaId) {
         toast.error("Please select UserType");
-        return;
-      }
-      if (!selectedUserType) {
-        toast.error("Please select User Type.");
         return;
       }
 
       const updatedUser = {
         ...user,
         halkaId: selectedHalkaId,
-        userType: selectedUserType,
       };
 
       InviteUserAPI(localStorage.getItem("jwtToken"), updatedUser);
@@ -80,7 +72,6 @@ export default function InviteStakeHolders() {
           return {
             ...user,
             halkaId: updatedUser.halkaId,
-            userType: updatedUser.userType,
           };
         }
         return user;
@@ -101,10 +92,9 @@ export default function InviteStakeHolders() {
               <th>NAME</th>
               <th>CNIC</th>
               <th>SELECT HALKA</th>
-              <th>USERTYPE</th>
               <th>STATUS</th>
               <th>MY HALKA</th>
-              <th>MY TYPE</th>
+              <th>USER TYPE</th>
             </tr>
           </thead>
           <tbody>
@@ -124,23 +114,6 @@ export default function InviteStakeHolders() {
                         {halka.halkaName}
                       </option>
                     ))}
-                  </select>
-                </td>
-                <td>
-                  <select
-                    id={`userType-${user.cnic}`}
-                    className="form-select"
-                    required
-                  >
-                    <option value="">Select User Type</option>
-                    {user.userType === "admin" ? (
-                      <option value="admin">Admin</option>
-                    ) : (
-                      <>
-                        <option value="voter">Voter</option>
-                        <option value="candidate">Candidate</option>
-                      </>
-                    )}
                   </select>
                 </td>
                 <td>
