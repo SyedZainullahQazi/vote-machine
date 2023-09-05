@@ -12,6 +12,7 @@ const deleteHalka = async (req, res) => {
          return res.status(400).json({ message: 'Cannot delete Halka with an active election' });
        }
        await User.updateMany({ halkaId }, { halkaId: null });
+
       const deletedRecord = await Halka.deleteOne({ halkaId });
       if (deletedRecord.deletedCount === 1) {
         res.status(200).json({ message: 'Record deleted successfully' });

@@ -20,12 +20,10 @@ async function DisableVoting(electionId) {
       if (Array.isArray(candidates) && candidates.length > 0) {
         for (const candidateData of candidates) {
           const candidateId = candidateData.candidateId;
-          
           const candidate = await User.findOne({ _id: candidateId });
           candidateData.partyName = candidate.partyName;
           candidateData.symbolImg = candidate.symbolImg;
           candidateData.username=candidate.username;
-
           const totalVotes = await User.countDocuments({
             votedFor: candidateId,
           });

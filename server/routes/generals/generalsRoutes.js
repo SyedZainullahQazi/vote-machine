@@ -4,7 +4,6 @@ const authMiddleware = require("../../middlewares/auth/authMiddleware");
 const {GetUserDetails,GetUserDetailsForInvite}= require("../../controllers/general/GetUserDetails");
 const GetClosestSchedule=require("../../controllers/general/GetClosestSchedule");
 const GetCandidateResultDetails=require("../../controllers/general/results/CandidateResultDetails");
-
 const router = express.Router();
 
 router.post('/user-details',authMiddleware,GetUserDetails);

@@ -7,6 +7,7 @@ import getUserDetailsFromLocalStorage from '../../helpers/userDetailsFromLocalSt
 export function CandidateProtectedRoute({ elementBody: Component}) {
     const {isLoggedIn} = useAuth();
     const userDetails=getUserDetailsFromLocalStorage();
+
     if(!userDetails && isLoggedIn)
     {
       return (<div>Loading.....</div>);

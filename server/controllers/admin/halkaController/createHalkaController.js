@@ -10,6 +10,7 @@ const CreateHalkaCont = async (req, res) => {
     if (existingHalka) {
       return res.status(400).json({ message: 'halkaId already exists' });
     }
+    
     const newHalka = new Halka({
       halkaId,
       halkaName,

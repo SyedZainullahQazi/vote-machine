@@ -12,7 +12,6 @@ import { updateElectionScheduleAPI } from "../../apis/admin/scheduleElection/Sch
 
 import "react-toastify/dist/ReactToastify.css";
 
-// Your form validation schema using Yup
 const validationSchema = Yup.object().shape({
   startDate: Yup.date().required("Start Date is required"),
   startTime: Yup.string().required("Start Time is required"),
