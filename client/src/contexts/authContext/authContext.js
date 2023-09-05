@@ -11,7 +11,7 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem('jwtToken'));
   const [userDetails,setUserDetails]=useState(localStorage.getItem('userDetails'));
-  
+
   const login = newToken => {
     setToken(newToken);
     localStorage.setItem('jwtToken', newToken);
@@ -52,8 +52,6 @@ export const AuthProvider = ({ children }) => {
     }
     fetchUserDetails();
   }, [token,setUserDetails]);
-
-
 
   const isLoggedIn = !!token;
 
