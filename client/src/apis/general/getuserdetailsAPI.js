@@ -14,6 +14,7 @@ export const GetUser=async(token)=>{
         throw error;
     }
 }
+
 export const GetUserForInvitesAPI = async (token) => {
 
   try {
@@ -28,5 +29,3 @@ export const GetUserForInvitesAPI = async (token) => {
     toast.error('An error occurred while fetching users for invites.');
   }
 };
-
-
