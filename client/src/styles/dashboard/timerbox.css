@@ -1,0 +1,21 @@
+/* TimerBox.css */
+.timer-box {
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  margin: 8px;
+  border: 6px solid #FFD700; /* React blue color */
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  padding-top:2vw;
+  border-radius: 10vw;
+}
+
+.timer-label {
+  font-size: 20px;
+}
+
+.timer-value {
+  font-size: 24px;
+}
