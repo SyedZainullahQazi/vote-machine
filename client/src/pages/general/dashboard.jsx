@@ -10,7 +10,6 @@ export default function Dashboard() {
   const [votingStatus, setVotingStatus] = useState("");
   const [ElectionSchedule, setElectionSchedule] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [refreshKey, setRefreshKey] = useState(0); // State to trigger component re-render
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,7 +23,7 @@ export default function Dashboard() {
       }
     };
     fetchData();
-  }, []);
+  }, [votingStatus]);
 
   useEffect(() => {
     const updateRemainingTime = () => {
@@ -35,15 +34,15 @@ export default function Dashboard() {
           if (timeUntilStart > 0) {
             setRemainingTime(formatTime(timeUntilStart));
             setVotingStatus("Voting hasn't started");
+          }
+        } else {
+          const timeUntilEnd = new Date(ElectionSchedule.endDateTime) - currentDateTime;
+          if (timeUntilEnd > 0) {
+            setRemainingTime(formatTime(timeUntilEnd));
+            setVotingStatus("Voting has started");
           } else {
-            const timeUntilEnd = new Date(ElectionSchedule.endDateTime) - currentDateTime;
-            if (timeUntilEnd > 0) {
-              setRemainingTime(formatTime(timeUntilEnd));
-              setVotingStatus("Voting has started");
-            } else {
-              setRemainingTime("Election ended");
-              setVotingStatus("");
-            }
+            setRemainingTime("Election ended");
+            setVotingStatus("");
           }
         }
       }
@@ -67,21 +66,8 @@ export default function Dashboard() {
     return () => clearInterval(timer);
   }, [ElectionSchedule]);
 
-  useEffect(() => {
-    if (
-      (votingStatus === "Voting hasn't started" || votingStatus === "Voting has started") &&
-      remainingTime &&
-      remainingTime.days === 0 &&
-      remainingTime.hours === 0 &&
-      remainingTime.minutes === 0 &&
-      remainingTime.seconds === 0
-    ) {
-      setRefreshKey((prevKey) => prevKey + 1);
-    }
-  }, [votingStatus, remainingTime]);
-
   return (
-    <div className="dashboard-page" key={refreshKey}>
+    <div className="dashboard-page">
       <Navbar />
       <div className="content">
         {loading ? (

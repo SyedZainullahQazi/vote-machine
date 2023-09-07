@@ -35,21 +35,28 @@ export default function HalkaResultPoll() {
     const currentItems = candidates?Array.isArray(candidates)?candidates.slice(indexOfFirstItem, indexOfLastItem) : []:[];
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-    const findWinner=()=>{
-        let username=""
-        if(Array.isArray(candidates)&&candidates)
-        {
-            let votecount=0;
-            for(let i=0;i<candidates.length;i++)
-            {
-                if(votecount<candidates[i].voteCount){
-                    votecount=candidates[i].votecount;
-                    username=candidates[i].username;
-                }
+    const findWinner = () => {
+        let winners = [];
+        let maxVoteCount = -1;
+      
+        if (Array.isArray(candidates) && candidates.length > 0) {
+          for (let i = 0; i < candidates.length; i++) {
+            if (candidates[i].voteCount > maxVoteCount) {
+              maxVoteCount = candidates[i].voteCount;
+              winners = [candidates[i].username];
+            } else if (candidates[i].voteCount === maxVoteCount) {
+              winners.push(candidates[i].username);
             }
-            return username;}
-        return username;
-    }
+          }
+          if (winners.length === 1) {
+            return winners[0];
+          } else if (winners.length > 1) {
+            return "Draw between contestants";
+          }
+        }
+        return "";
+      };
+      
       
     return (
         <div className="">
