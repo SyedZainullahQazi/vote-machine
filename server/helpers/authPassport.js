@@ -5,7 +5,7 @@ const User=require("../models/users/user");
 
 const JWTStrategy = passportJWT.Strategy;
 const ExtractJWT = passportJWT.ExtractJwt;
-const jwtSecret = process.env.JWT_SECRET||"sajjadbhai"; // Replace with your secret key
+const jwtSecret = process.env.JWT_SECRET
 
 passport.use(new JWTStrategy({
     jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
