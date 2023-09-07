@@ -1,5 +1,4 @@
 const express = require('express');
-
 const authMiddleware = require("../../middlewares/auth/authMiddleware");
 const UpdateCandidate=require("../../controllers/user/update-candidate");
 const upload=require("../../helpers/multerHelper");

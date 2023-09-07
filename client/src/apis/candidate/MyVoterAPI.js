@@ -5,7 +5,7 @@ const MyVoterAPI = async (token, halkaId) => {
     const data = { halkaId };
     const response = await axios.post(
     `${process.env.REACT_APP_HOST}/api/candidate/get-voters-in-halka`, 
-    data, { headers:{authorization:token} });
+    data, { headers:{authorization:`Bearer ${token}`} });
     return response.data;
   } catch (error) {
     throw error;

@@ -7,7 +7,7 @@ export const DeleteHalkaAPI = async ( token,halkaIds) => {
       `${process.env.REACT_APP_HOST}/api/admin/halka/delete-halka`,
       {
         headers: {
-          authorization: token,
+          authorization:`Bearer ${token}`,
           halkaId:halkaIds,
         }
       }

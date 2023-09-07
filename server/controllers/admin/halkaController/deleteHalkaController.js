@@ -1,4 +1,4 @@
-const { Halka } = require('../../../models/halka/halka');
+ const { Halka } = require('../../../models/halka/halka');
 const  User  = require('../../../models/users/user');
 const Election = require('../../../models/election-schedule/election-schedule');
 

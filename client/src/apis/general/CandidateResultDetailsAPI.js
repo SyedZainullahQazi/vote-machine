@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom";
 export default async function CandidateResultDetailsAPI(token, scheduleId,halkaId) {
   try {
     const headers = {
-      Authorization:token,
+      Authorization:`Bearer ${token}`,
     };
     const requestBody = {
       scheduleId,

@@ -13,7 +13,7 @@ export const UpdateHalkaAPI = async (token, halkaData) => {
       },
       {
         headers: {
-          authorization: token,
+          authorization: `Bearer ${token}`,
         },
       }
     );

@@ -34,7 +34,7 @@ export default function ApplyAsCandidate() {
       partyName: Yup.string().min(3, "Must be 3 Chars").required("Required"),
       image: Yup.mixed()
       .test("fileType", "Only image files are allowed", (value) => {
-      if (!value) return true; // Allow empty field
+      if (!value) return true; 
       const supportedFormats = ["image/jpeg", "image/png", "image/gif","image/jpg","image/webp"];
       return supportedFormats.includes(value.type);
       })
@@ -55,7 +55,7 @@ export default function ApplyAsCandidate() {
 
       setTimeout(()=>{
         stateUpdate ? setStateUpdate(false) : setStateUpdate(true);
-      },1000);
+      },500);
     } catch (error) {
     }
   };
@@ -104,6 +104,7 @@ export default function ApplyAsCandidate() {
                   name="image"
                   className="form-control"
                   onBlur={formik.handleBlur}
+                  accept=".png, .jpg, .jpeg .webp"
                   required
                 />
                 {formik.touched.image && formik.errors.image ? (

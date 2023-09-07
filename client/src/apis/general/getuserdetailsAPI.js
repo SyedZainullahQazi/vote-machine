@@ -5,7 +5,7 @@ export const GetUser=async(token)=>{
     try{
         const response=await axios.post(
             `${process.env.REACT_APP_HOST}/api/generals/user-details`,
-            {token:token}
+            {token:`Bearer ${token}`}
         );
         return response;
     }
@@ -19,7 +19,7 @@ export const GetUserForInvitesAPI = async (token) => {
   try {
     const response = await axios.get(`${process.env.REACT_APP_HOST}/api/generals/user-details/for-invite`, {
       headers: {
-        authorization:token,
+        authorization:`Bearer ${token}`,
       }
     });
     return response.data.users;

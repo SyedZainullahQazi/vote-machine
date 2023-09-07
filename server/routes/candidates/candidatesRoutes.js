@@ -1,9 +1,9 @@
 const express = require('express');
-const authMiddleware = require('../../middlewares/auth/authMiddleware');
+const candidateAuthMiddleware = require('../../middlewares/auth/candidateAuthMiddleware');
 const GetVotersInHalka=require("../../controllers/candidate/GetVotersInHalka");
 const router = express.Router();
 
-router.post("/get-voters-in-halka",authMiddleware,GetVotersInHalka);
+router.post("/get-voters-in-halka",candidateAuthMiddleware,GetVotersInHalka);
 
 module.exports = router;
 

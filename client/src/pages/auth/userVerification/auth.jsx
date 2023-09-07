@@ -190,6 +190,7 @@ export default function Auth(props) {
             name="image"
             className="form-control"
             onBlur={formik.handleBlur}
+            accept=".png, .jpg, .jpeg .webp"
             required
           />
           {formik.touched.image && formik.errors.image ? (

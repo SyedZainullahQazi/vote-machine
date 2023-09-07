@@ -8,6 +8,6 @@ const ElectionSchema = new mongoose.Schema({
   halka: { type: [halkaModel.halkaSchema], required: false }, // Embed the halka schema directly
 });
 
-const Election = mongoose.model("election", ElectionSchema);
+module.exports= mongoose.model("election", ElectionSchema);
 
-module.exports = Election;
+

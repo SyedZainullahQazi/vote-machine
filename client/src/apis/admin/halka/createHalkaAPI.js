@@ -5,7 +5,7 @@ export const CreateHalkaAPI = async (newHalka, newToken) => {
   try {
     const response = await axios.post(
       `${process.env.REACT_APP_HOST}/api/admin/halka/create-halka`,
-      { halka: newHalka, token: newToken }
+      { halka: newHalka},{headers: {authorization:`Bearer ${newToken}`,}}
     );
 
     if (response.status === 200) {

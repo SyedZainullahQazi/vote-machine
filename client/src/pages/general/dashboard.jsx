@@ -3,13 +3,14 @@ import { FetchClosestScheduleAPI } from "../../apis/general/GetClosestSchedule";
 import Navbar from "../../components/navbar/navbar";
 import TimerBox from "../../components/timerbox/timerbox";
 import "../../styles/dashboard/dashboards.css";
-import Spinner from "react-spinner"; // Import the Spinner component
+import Spinner from "react-spinner";
 
 export default function Dashboard() {
   const [remainingTime, setRemainingTime] = useState(null);
   const [votingStatus, setVotingStatus] = useState("");
   const [ElectionSchedule, setElectionSchedule] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [refreshKey, setRefreshKey] = useState(0); // State to trigger component re-render
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,15 +35,15 @@ export default function Dashboard() {
           if (timeUntilStart > 0) {
             setRemainingTime(formatTime(timeUntilStart));
             setVotingStatus("Voting hasn't started");
-          }
-        } else {
-          const timeUntilEnd = new Date(ElectionSchedule.endDateTime) - currentDateTime;
-          if (timeUntilEnd > 0) {
-            setRemainingTime(formatTime(timeUntilEnd));
-            setVotingStatus("Voting has started");
           } else {
-            setRemainingTime("Election ended");
-            setVotingStatus("");
+            const timeUntilEnd = new Date(ElectionSchedule.endDateTime) - currentDateTime;
+            if (timeUntilEnd > 0) {
+              setRemainingTime(formatTime(timeUntilEnd));
+              setVotingStatus("Voting has started");
+            } else {
+              setRemainingTime("Election ended");
+              setVotingStatus("");
+            }
           }
         }
       }
@@ -59,15 +60,28 @@ export default function Dashboard() {
 
     let timer;
     if (ElectionSchedule) {
-      updateRemainingTime()
+      updateRemainingTime();
       timer = setInterval(updateRemainingTime, 1000);
     }
 
     return () => clearInterval(timer);
   }, [ElectionSchedule]);
 
+  useEffect(() => {
+    if (
+      (votingStatus === "Voting hasn't started" || votingStatus === "Voting has started") &&
+      remainingTime &&
+      remainingTime.days === 0 &&
+      remainingTime.hours === 0 &&
+      remainingTime.minutes === 0 &&
+      remainingTime.seconds === 0
+    ) {
+      setRefreshKey((prevKey) => prevKey + 1);
+    }
+  }, [votingStatus, remainingTime]);
+
   return (
-    <div className="dashboard-page">
+    <div className="dashboard-page" key={refreshKey}>
       <Navbar />
       <div className="content">
         {loading ? (

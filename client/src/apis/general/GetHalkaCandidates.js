@@ -6,7 +6,7 @@ export const GetHalkaCandidatesAPI = async (token, halkaId) => {
       { halkaId },
       {
         headers: {
-          Authorization: token,
+          Authorization:`Bearer ${token}`,
         },
       }
     );

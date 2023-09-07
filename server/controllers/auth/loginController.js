@@ -14,7 +14,7 @@ async function checkLogin(req, res) {
 
     const isPasswordValid = await bcrypt.compare(password, existingUser.password);
     if (isPasswordValid) {
-      const token = jwt.sign({ sub: existingUser.cnic }, jwtSecret);
+      const token = jwt.sign({ sub: existingUser.cnic,type:existingUser.userType }, jwtSecret);
       return res.json({ token });
     } else {
       res.status(400).json({ message: "Invalid Password" });

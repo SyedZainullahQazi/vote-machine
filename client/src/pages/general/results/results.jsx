@@ -3,7 +3,6 @@ import { fetchElectionSchedules } from '../../../apis/admin/scheduleElection/Sch
 import Navbar from '../../../components/navbar/navbar';
 import { ToastContainer } from 'react-toastify';
 import { Pagination } from '../../../components/pagination/pagination';
-import HalkaResults from './halkaResults';
 import {Link} from "react-router-dom"
 
 const Results=()=>{
@@ -24,7 +23,7 @@ const Results=()=>{
     }, []);
 
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 8;
+    const itemsPerPage = 1;
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = electionSchedules.slice(

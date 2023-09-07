@@ -8,7 +8,7 @@ export const InviteUserAPI = async (token, data) => {
       data,
       {
         headers: {
-          authorization: token,
+          authorization:`Bearer ${token}`,
         },
       }
     );

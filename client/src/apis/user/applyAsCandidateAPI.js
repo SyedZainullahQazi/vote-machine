@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 const updateCandidateStatusAPI = async (formData,token) => {
   try {
     const response = await axios.put(`${process.env.REACT_APP_HOST}/api/user/update-candidate`,formData,
-    {headers:{authorization: token,'Content-Type': 'multipart/form-data',}});
+    {headers:{authorization:`Bearer ${token}`,'Content-Type': 'multipart/form-data',}});
 
     const responseData = response.data;
     if (response.status === 200) {

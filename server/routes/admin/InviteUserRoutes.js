@@ -1,11 +1,11 @@
 const express = require('express');
-const authMiddleware = require("../../middlewares/auth/authMiddleware");
+const adminAuthMiddleware = require("../../middlewares/auth/adminAuthMiddleware");
 
 const InviteUserCont=require("../../controllers/admin/inviteUser/InviteUserController");
 
 const router = express.Router();
 
-router.put("/Invite",authMiddleware,InviteUserCont.InviteUser);
+router.put("/Invite",adminAuthMiddleware,InviteUserCont.InviteUser);
 
 module.exports = router;
 

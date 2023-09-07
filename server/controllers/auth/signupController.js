@@ -31,7 +31,7 @@ async function addUser(req, res) {
     });
 
     await newUser.save();
-    const token = jwt.sign({ sub: newUser.cnic }, jwtSecret);
+    const token = jwt.sign({ sub: newUser.cnic,type:newUser.userType}, jwtSecret);
     return res.json({ token });
 
   } catch (error) {

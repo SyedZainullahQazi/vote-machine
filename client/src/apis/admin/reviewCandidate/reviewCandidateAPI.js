@@ -3,8 +3,7 @@ import {toast} from 'react-toastify'
 
 const GetPendingApprovalsAPI = async (token) => {
   try {
-    const response = await axios.get(`${process.env.REACT_APP_HOST}/api/admin/candidate-application/get`
-    ,{headers:{authorization:token}});
+    const response = await axios.get(`${process.env.REACT_APP_HOST}/api/admin/candidate-application/get`,{headers: {authorization:`Bearer ${token}`,}});
     if (response.status === 200) {
       return response.data;
     } else {
@@ -21,9 +20,7 @@ export const ApproveCandidateAPI = async (token, approved) => {
     const response = await axios.put(
       `${process.env.REACT_APP_HOST}/api/admin/candidate-application/approved`,
       approved,
-      {
-        headers: { Authorization: token },
-      }
+      {headers: {authorization:`Bearer ${token}`,}}
     );
 
     if (response.status === 200) {
@@ -43,9 +40,7 @@ export const RejectCandidateAPI = async (token, approved) => {
     const response = await axios.put(
       `${process.env.REACT_APP_HOST}/api/admin/candidate-application/reject`,
       approved,
-      {
-        headers: { Authorization: token },
-      }
+      {headers: {authorization:`Bearer ${token}`,}}
     );
 
     if (response.status === 200) {

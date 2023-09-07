@@ -5,8 +5,8 @@ const UpdateCandidate = async (req, res) => {
   const symbolImg = req.file ? req.file.filename : ''; 
     try {
       const userId = id;
-      await User.updateOne({ _id: userId }, { appliedAsCandidate: appliedAsCandidate, partyName: partyName,symbolImg:symbolImg}); // Update both fields in a single object
-      res.status(200).json({ message: 'User updated successfully' });
+      await User.updateOne({ _id: userId }, { appliedAsCandidate: appliedAsCandidate, partyName: partyName,symbolImg:symbolImg});
+      res.status(200).json({ message: 'Applied For CandidateShip' });
     } catch (error) {
       console.error('Error updating user:', error);
       res.status(500).json({ message: 'Error updating user' });

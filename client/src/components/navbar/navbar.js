@@ -1,8 +1,8 @@
 import React from 'react';
+import {useState,useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from "../../contexts/authContext/authContext";
-
-import getUserDetailsFromLocalStorage from '../../helpers/userDetailsFromLocalStorage/getUserDetails';
+import { GetUser } from '../../apis/general/getuserdetailsAPI';
 
 import '../../styles/navbar/navbar.css';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
@@ -10,7 +10,22 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const Navbar = () => {
   const {logout}=useAuth();
-  const userDetails=getUserDetailsFromLocalStorage();
+  const [userDetails,setUserDetails]=useState(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const fetchedUser = await GetUser(
+          localStorage.getItem("jwtToken")
+        );
+        console.log(fetchedUser.data.user);
+        setUserDetails(fetchedUser.data.user);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    fetchData();
+  }, []);
 
   if (!userDetails) {
     return <div>Loading...</div>;

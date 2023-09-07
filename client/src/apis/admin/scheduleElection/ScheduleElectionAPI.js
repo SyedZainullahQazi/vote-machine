@@ -8,7 +8,7 @@ export default async function ScheduleElectionAPI(token, data) {
       data,
       {
         headers: {
-          authorization: token,
+          authorization: `Bearer ${token}`,
         },
       }
     );
@@ -48,7 +48,8 @@ export default async function ScheduleElectionAPI(token, data) {
 }
 export const fetchElectionSchedules = async (token) => {
   try {
-    const response = await axios.get(`${process.env.REACT_APP_HOST}/api/admin/schedule-elections/get-schedules`,{headers:{authorization:token}});
+    const response = await axios.get(`${process.env.REACT_APP_HOST}/api/admin/schedule-elections/get-schedules`,
+    {headers:{authorization:`Bearer ${token}`}});
     if (response.status === 200) {
       return response.data;
     }
@@ -66,7 +67,7 @@ export const deleteElectionSchedule = async (token, _id) => {
       `${process.env.REACT_APP_HOST}/api/admin/schedule-elections/delete-schedule`,
       {
         headers: {
-          authorization: token,
+          authorization: `Bearer ${token}`,
         },
         data: {
           _id: _id,
@@ -99,7 +100,7 @@ export const updateElectionScheduleAPI = async (token, data) => {
       data,
       {
         headers: {
-          authorization: token,
+          authorization: `Bearer ${token}`,
         },
       }
     );

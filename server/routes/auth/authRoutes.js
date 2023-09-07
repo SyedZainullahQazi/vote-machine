@@ -7,19 +7,16 @@ const passport=require("../../helpers/authPassport");
 const authMiddleware = require("../../middlewares/auth/authMiddleware");
 const Dashboard  = require('../../controllers/auth/dashboard');
 const forgetPassword=require("../../controllers/auth/authController/resetPassword");
+const {validateSignup,validateLogin}=require("../../validators/auth/auth-validation");
+const {validateResetPassword,validateNewPasswordReset}=require("../../validators/auth/forgotpass-validation");
+const validate=require("../../middlewares/validator/validator.js")
+
 const router = express.Router();
 
-router.post('/signup', upload.single('image'),signupController.addUser);
-router.post('/login',loginController.checkLogin)
-router.get("/dashboard",authMiddleware,Dashboard.dashboard);
-router.post("/reset-password",forgetPassword.ResetPasswordSend);
-router.post("/reset-password/new-password",forgetPassword.ResetPassword);
-
-
-router.get('/verify', passport.authenticate('jwt', { session: false }), (req, res) => {
-  return res.json({ message: 'Token verified' });
-});
-
+router.post('/signup', upload.single('image'),validateSignup,validate,signupController.addUser);
+router.post('/login',validateLogin,validate,loginController.checkLogin)
+router.post("/reset-password",validateResetPassword,validate,forgetPassword.ResetPasswordSend);
+router.post("/reset-password/new-password",validateNewPasswordReset,validate,forgetPassword.ResetPassword);
 
 module.exports = router;
 

@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.post('/user-details',authMiddleware,GetUserDetails);
 router.get('/user-details/for-invite',authMiddleware,GetUserDetailsForInvite);
-router.get('/closest-schedule',GetClosestSchedule);
+router.get('/closest-schedule',authMiddleware,GetClosestSchedule);
 router.post('/candidate-result-details',authMiddleware,GetCandidateResultDetails);
 
 module.exports = router;
