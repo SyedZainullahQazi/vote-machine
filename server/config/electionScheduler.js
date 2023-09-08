@@ -1,6 +1,5 @@
 // cron.js
 const cron = require('node-cron');
-const mongoose = require('mongoose');
 
 const DisableVoting=require("../controllers/general/DisableVoting");
 const Election = require('../models/election-schedule/election-schedule'); 

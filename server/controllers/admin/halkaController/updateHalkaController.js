@@ -3,7 +3,7 @@ const Election = require('../../../models/election-schedule/election-schedule');
 
 const updateHalka = async (req, res) => {
   try {
-   let { halkaId, halkaIdNew, halkaName } = req.body;
+   let { halkaId, halkaName } = req.body;
     
     const activeElection = await Election.findOne({ active: true });
     if (activeElection) {

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const Election = require("../../models/election-schedule/election-schedule");
-const { Halka, Candidate } = require("../../models/halka/halka");
+const { Halka } = require("../../models/halka/halka");
 const User = require("../../models/users/user");
 
 async function DisableVoting(electionId) {

@@ -14,7 +14,7 @@ const CreateHalkaCont = async (req, res) => {
     }
   }
 
-  halkaId = randomNum.toString();
+  let halkaId = randomNum.toString();
   if (typeof halkaName === "string") {
     halkaName = halkaName.toUpperCase();
   }

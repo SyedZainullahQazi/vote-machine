@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import Spinner from "react-spinner";
+
 import { FetchClosestScheduleAPI } from "../../apis/general/GetClosestSchedule";
 import Navbar from "../../components/navbar/navbar";
 import TimerBox from "../../components/timerbox/timerbox";
+
 import "../../styles/dashboard/dashboards.css";
-import Spinner from "react-spinner";
 
 export default function Dashboard() {
   const [remainingTime, setRemainingTime] = useState(null);

@@ -72,7 +72,7 @@ export default function ApplyAsCandidate() {
       <div className="content col-6">
         {userDetails ? (
           userDetails.appliedAsCandidate? (
-            <h1>Already Applied For Candidate</h1>
+            <h1>Applied For Candidateship</h1>
           ) : (
             <Form onSubmit={formik.handleSubmit}>
               <div>
