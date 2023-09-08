@@ -26,11 +26,9 @@ $ npm install
 $ npm starts
 ###Server Env Example:
 PORT=5000
-dbConnectionString="mongodb://127.0.0.1:27017/voteapp-database"
+dbConnectionString=
 CORS_ORIGIN="http://localhost:3000"
-JWT_SECRET="sajjadbhai"
+JWT_SECRET=
 #Client Env Example:
 REACT_APP_HOST="http://127.0.0.1:5000"
-RESETPASS_NEWPASS="/api/auth/reset-password/new-password"
-RESETPASS="/api/auth/reset-password/"
-JWT_SECRET="sajjadbhai"
+JWT_SECRET=
